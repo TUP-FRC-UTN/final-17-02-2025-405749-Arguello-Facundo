@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header text-center bg-dark text-white">
+            <h2>Login</h2>
+          </div>
+          <div class="card-body">
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+              <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" class="form-control" formControlName="username">
+                <div *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched" class="text-danger">
+                  <small *ngIf="loginForm.get('username')?.errors?.['required']">El nombre de usuario es requerido.</small>
+                  <small *ngIf="loginForm.get('username')?.errors?.['minlength']">El nombre de usuario debe tener al menos 3 caracteres.</small>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" class="form-control" formControlName="password">
+                <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="text-danger">
+                  <small *ngIf="loginForm.get('password')?.errors?.['required']">La contraseña es requerida.</small>
+                  <small *ngIf="loginForm.get('password')?.errors?.['minlength']">La contraseña debe tener al menos 5 caracteres.</small>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary btn-block" [disabled]="loginForm.invalid">Iniciar Sesión</button>
+              <div *ngIf="loginError" class="text-danger mt-2">
+                {{ loginError }}
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

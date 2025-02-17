@@ -1,0 +1,16 @@
+.word {
+    font-size: 2rem;
+    letter-spacing: 0.5rem;
+  }
+  
+  .keyboard button {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+  
+  .hangman-image img {
+    width: 100px;
+    height: auto;
+    margin-bottom: 20px;
+  }

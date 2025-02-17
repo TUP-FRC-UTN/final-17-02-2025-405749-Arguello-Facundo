@@ -1,0 +1,26 @@
+.navbar {
+    margin-bottom: 20px;
+    padding: 0 20px;
+  }
+  
+  .navbar-brand {
+    margin-right: 30px;
+  }
+  
+  .right-menu {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .navbar-text {
+    padding-right: 15px;
+  }
+  
+  .nav-link {
+    cursor: pointer;
+  }
+  
+  .navbar-nav .nav-link {
+    padding: 8px 15px;
+  }

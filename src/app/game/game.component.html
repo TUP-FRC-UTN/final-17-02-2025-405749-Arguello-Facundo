@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8 text-center">
+      <h2>Juego del Ahorcado</h2>
+      <div class="hangman-image">
+        <svg width="200" height="300">
+          <!-- Dibujo del personaje -->
+          <circle *ngIf="remainingAttempts <= 5" cx="150" cy="120" r="20" fill="black" /> <!-- cabeza -->
+          <line *ngIf="remainingAttempts <= 4" x1="150" y1="140" x2="150" y2="200" stroke="black" /> <!-- cuerpo -->
+          <line *ngIf="remainingAttempts <= 3" x1="150" y1="150" x2="130" y2="180" stroke="black" /> <!-- brazo izquierdo -->
+          <line *ngIf="remainingAttempts <= 2" x1="150" y1="150" x2="170" y2="180" stroke="black" /> <!-- brazo derecho -->
+          <line *ngIf="remainingAttempts <= 1" x1="150" y1="200" x2="130" y2="240" stroke="black" /> <!-- pierna izquierda -->
+          <line *ngIf="remainingAttempts <= 0" x1="150" y1="200" x2="170" y2="240" stroke="black" /> <!-- pierna derecha -->
+        </svg>
+      </div>
+      <div class="word">
+        <span *ngFor="let char of displayedWord">{{ char }} </span>
+      </div>
+      <div class="keyboard mt-4">
+        <button *ngFor="let letter of alphabet" class="btn btn-secondary m-1" (click)="guessLetter(letter)" [disabled]="guessedLetters.includes(letter)">
+          {{ letter }}
+        </button>
+      </div>
+      <div class="mt-4">
+        <p>Intentos restantes: {{ remainingAttempts }}</p>
+        <p>Categoría: {{ category }}</p>
+        <p *ngIf="gameStatus === 'won'" class="text-success">Adivinaste la palabra!.</p>
+        <p *ngIf="gameStatus === 'lost'" class="text-danger">Perdiste... La palabra era: {{ word }}</p>
+        <p>Letras Correctas: {{ correctLetters.join(', ') }}</p>
+        <p>Letras Incorrectas: {{ incorrectLetters.join(', ') }}</p>
+      </div>
+      <button *ngIf="gameStatus !== 'playing'" class="btn btn-primary mt-4" (click)="startNewGame()">Jugar de nuevo</button>
+    </div>
+  </div>
+</div>
